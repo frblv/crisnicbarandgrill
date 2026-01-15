@@ -1,67 +1,70 @@
-import beachView from "@/assets/beach-view.jpeg";
-import { Button } from "@/components/ui/button";
-import { MapPin, Clock } from "lucide-react";
+import logo from "@/assets/logo.png";
+import barEntrance from "@/assets/bar-entrance.jpeg";
+import { MapPin, Phone, Navigation } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src={beachView}
-          alt="Crisnic Beach Restaurant - Ocean View in Discovery Bay, Jamaica"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+    <section className="min-h-screen flex flex-col">
+      {/* Header with wood texture background and logo */}
+      <div className="relative">
+        <div className="absolute inset-0">
+          <img
+            src={barEntrance}
+            alt="Crisnic Bar & Grill - Discovery Bay, Jamaica"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
+        
+        <div className="relative z-10 flex items-center justify-center py-12 md:py-20">
+          <img
+            src={logo}
+            alt="Crisnic Bar & Grill"
+            className="w-64 md:w-80 lg:w-96 drop-shadow-2xl animate-fade-in"
+          />
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in">
-        <p className="text-white/90 text-lg md:text-xl font-light tracking-widest uppercase mb-4">
-          Discovery Bay, Jamaica
-        </p>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 drop-shadow-lg">
-          Crisnic
-        </h1>
-        <p className="text-xl md:text-2xl text-white/90 font-light mb-8 max-w-2xl mx-auto">
-          Fresh seafood & cold drinks with your feet in the sand
-        </p>
+      {/* Info section with cyan background */}
+      <div className="flex-1 bg-[hsl(185,65%,75%)] flex flex-col items-center justify-center px-6 py-12 text-center">
+        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+          Discovery Bay
+        </h2>
+        
+        <div className="flex items-center gap-2 text-accent mb-1">
+          <span className="text-lg md:text-xl font-medium">Discovery Bay Beach, Jamaica</span>
+        </div>
+        <MapPin className="w-5 h-5 text-accent mb-6" />
 
-        {/* Quick Info */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <div className="flex items-center gap-2 text-white/90 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <Clock className="w-5 h-5" />
-            <span>Open Daily 10am - 10pm</span>
-          </div>
-          <div className="flex items-center gap-2 text-white/90 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <MapPin className="w-5 h-5" />
-            <span>Discovery Bay Beach</span>
-          </div>
+        <div className="text-foreground/80 text-lg md:text-xl mb-8 space-y-1">
+          <p>Open Daily: 10 a.m. to 10 p.m.</p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="bg-gradient-ocean text-white hover:opacity-90 transition-opacity text-lg px-8"
+        {/* Action Buttons */}
+        <div className="flex flex-col gap-4 w-full max-w-sm">
+          <button
             onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex items-center justify-center gap-3 bg-foreground text-white py-4 px-6 rounded font-semibold text-lg hover:bg-foreground/90 transition-colors"
           >
-            View Menu
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-white text-white hover:bg-white/20 text-lg px-8"
+            <Navigation className="w-5 h-5" />
+            VIEW MENU
+          </button>
+          
+          <a
+            href="tel:+18761234567"
+            className="flex items-center justify-center gap-3 bg-accent text-white py-4 px-6 rounded font-semibold text-lg hover:bg-accent/90 transition-colors border-2 border-accent"
+          >
+            <Phone className="w-5 h-5" />
+            CALL US
+          </a>
+          
+          <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="flex items-center justify-center gap-3 bg-transparent text-foreground py-4 px-6 rounded font-semibold text-lg hover:bg-foreground/10 transition-colors border-2 border-accent"
           >
-            Find Us
-          </Button>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-wave">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-white/70 rounded-full" />
+            <MapPin className="w-5 h-5" />
+            FIND US
+          </button>
         </div>
       </div>
     </section>
