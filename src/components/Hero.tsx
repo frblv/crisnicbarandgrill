@@ -32,7 +32,7 @@ const Hero = () => {
         </h2>
         
         <div className="flex items-center gap-2 text-accent mb-1">
-          <span className="text-lg md:text-xl font-medium">Discovery Bay Beach, Jamaica</span>
+          <span className="text-lg md:text-xl font-medium">Fortlands Road, Discovery Bay, Jamaica</span>
         </div>
         <MapPin className="w-5 h-5 text-accent mb-6" />
 
@@ -51,20 +51,20 @@ const Hero = () => {
           </button>
           
           <a
-            href="tel:+18761234567"
+            href="tel:+18768541480"
             className="flex items-center justify-center gap-3 bg-accent text-white py-4 px-6 rounded font-semibold text-lg hover:bg-accent/90 transition-colors border-2 border-accent"
           >
             <Phone className="w-5 h-5" />
-            CALL US
+            876 854 1480
           </a>
           
-          <button
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          <a
+            href="tel:+18764623310"
             className="flex items-center justify-center gap-3 bg-transparent text-foreground py-4 px-6 rounded font-semibold text-lg hover:bg-foreground/10 transition-colors border-2 border-accent"
           >
-            <MapPin className="w-5 h-5" />
-            FIND US
-          </button>
+            <Phone className="w-5 h-5" />
+            876 462 3310
+          </a>
         </div>
       </div>
     </section>
