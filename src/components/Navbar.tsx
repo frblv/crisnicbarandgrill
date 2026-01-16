@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Waves } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Menu", href: "#menu" },
@@ -40,20 +41,17 @@ const Navbar = () => {
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-2"
+            className="flex items-center"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <Waves className={`w-7 h-7 ${isScrolled ? "text-primary" : "text-white"}`} />
-            <span
-              className={`text-2xl font-display font-bold ${
-                isScrolled ? "text-foreground" : "text-white"
-              }`}
-            >
-              Crisnic
-            </span>
+            <img 
+              src={logo} 
+              alt="Crisnic Bar & Grill" 
+              className="h-12 md:h-14 w-auto"
+            />
           </a>
 
           {/* Desktop Nav */}
