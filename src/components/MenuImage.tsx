@@ -18,12 +18,9 @@ const MenuImage = () => {
           <p className="text-primary font-medium tracking-widest uppercase mb-2">
             Taste of Jamaica
           </p>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
             Our Menu
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Our seafood comes straight from local fishermen every morning
-          </p>
         </div>
 
         {/* Zoom Controls */}
