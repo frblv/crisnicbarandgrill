@@ -50,10 +50,14 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Contact</h3>
-              <p className="text-muted-foreground text-sm">
-                Walk-ins Welcome<br />
-                Just come by!
-              </p>
+              <div className="space-y-1">
+                <a href="tel:+18768541480" className="block text-muted-foreground text-sm hover:text-primary transition-colors">
+                  876 854 1480
+                </a>
+                <a href="tel:+18764623310" className="block text-muted-foreground text-sm hover:text-primary transition-colors">
+                  876 462 3310
+                </a>
+              </div>
             </CardContent>
           </Card>
 
