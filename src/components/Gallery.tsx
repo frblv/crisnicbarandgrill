@@ -2,9 +2,11 @@ import beachView from "@/assets/beach-view.jpeg";
 import barInterior from "@/assets/bar-interior.jpeg";
 import barView from "@/assets/bar-view.jpeg";
 import barEntrance from "@/assets/bar-entrance.jpeg";
+import barNight from "@/assets/bar-night.jpeg";
 
 const images = [
   { src: beachView, alt: "Ocean view from Crisnic restaurant" },
+  { src: barNight, alt: "Crisnic Bar & Grill at night with ocean view" },
   { src: barView, alt: "Crisnic bar and seating area" },
   { src: barInterior, alt: "Inside the bar at Crisnic" },
   { src: barEntrance, alt: "Entrance to Crisnic Beach Restaurant" },
