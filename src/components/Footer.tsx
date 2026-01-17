@@ -1,3 +1,4 @@
+import { Instagram, Facebook } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -11,6 +12,29 @@ const Footer = () => {
           <p className="text-white/70 mb-6 max-w-md">
             Fresh seafood, cold drinks, and Caribbean vibes on the beautiful shores of Discovery Bay, Jamaica.
           </p>
+          
+          {/* Social Media Links */}
+          <div className="flex gap-4 mb-6">
+            <a 
+              href="https://instagram.com/crisnicbarandgrill" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Follow us on Instagram"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a 
+              href="https://facebook.com/crisnicbarandgrill" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Follow us on Facebook"
+            >
+              <Facebook className="w-5 h-5" />
+            </a>
+          </div>
+          
           <div className="flex gap-4 text-white/60 text-sm">
             <span>Discovery Bay Beach</span>
             <span>•</span>
