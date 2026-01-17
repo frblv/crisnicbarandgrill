@@ -16,7 +16,7 @@ const Footer = () => {
           {/* Social Media Links */}
           <div className="flex gap-4 mb-6">
             <a 
-              href="https://instagram.com/crisnicbarandgrill" 
+              href="https://www.instagram.com/crisnicbeachbarandgrill?igsh=MWk2eGN6MGtvbGNpNg==" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
