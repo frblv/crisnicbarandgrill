@@ -3,6 +3,8 @@ import barInterior from "@/assets/bar-interior.jpeg";
 import barView from "@/assets/bar-view.jpeg";
 import barEntrance from "@/assets/bar-entrance.jpeg";
 import barNight from "@/assets/bar-night.jpeg";
+import ScrollReveal from "./ScrollReveal";
+import StaggerReveal, { StaggerItem } from "./StaggerReveal";
 
 const images = [
   { src: beachView, alt: "Ocean view from Crisnic restaurant" },
@@ -30,7 +32,7 @@ const Gallery = () => {
       <div className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-bl from-[hsl(var(--sunset)/0.15)] to-transparent rounded-full blur-3xl" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-12">
+        <ScrollReveal className="text-center mb-12">
           <p className="text-primary font-medium tracking-widest uppercase mb-2">
             The Vibes
           </p>
@@ -40,38 +42,42 @@ const Gallery = () => {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Relax beachside with cold drinks, fresh food, and the best views in Discovery Bay
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 gap-4" staggerDelay={0.1}>
           {images.map((image, idx) => (
-            <div
+            <StaggerItem
               key={idx}
-              className={`relative overflow-hidden rounded-2xl group ${
-                idx === 0 ? 'md:col-span-2 aspect-[21/9]' : 'aspect-[4/3]'
-              }`}
+              className={idx === 0 ? 'md:col-span-2' : ''}
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Glow border effect */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  boxShadow: 'inset 0 0 30px rgba(59, 178, 184, 0.3), 0 0 40px rgba(59, 178, 184, 0.2)'
-                }}
-              />
-              
-              {/* Caption */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <p className="text-white font-medium text-sm md:text-base">{image.alt}</p>
+              <div
+                className={`relative overflow-hidden rounded-2xl group ${
+                  idx === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'
+                }`}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Glow border effect */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    boxShadow: 'inset 0 0 30px rgba(59, 178, 184, 0.3), 0 0 40px rgba(59, 178, 184, 0.2)'
+                  }}
+                />
+                
+                {/* Caption */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                  <p className="text-white font-medium text-sm md:text-base">{image.alt}</p>
+                </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );

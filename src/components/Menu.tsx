@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Fish, Shell, Drumstick, Beer, GlassWater } from "lucide-react";
 import barInterior from "@/assets/bar-interior.jpeg";
+import ScrollReveal from "./ScrollReveal";
+import StaggerReveal, { StaggerItem } from "./StaggerReveal";
 
 const menuCategories = [
   {
@@ -73,7 +75,7 @@ const Menu = () => {
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[hsl(var(--sunset)/0.1)] rounded-full blur-3xl" />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <ScrollReveal className="text-center mb-16">
           <p className="text-primary font-medium tracking-widest uppercase mb-2">
             Taste of Jamaica
           </p>
@@ -83,42 +85,46 @@ const Menu = () => {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Fresh seafood caught daily, served with stunning ocean views and true Jamaican hospitality
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid gap-8 md:gap-10">
+        <StaggerReveal className="grid gap-8 md:gap-10" staggerDelay={0.15}>
           {menuCategories.map((category, idx) => (
-            <Card key={idx} className="glass-card border-0 overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-              <CardContent className="p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--ocean))] to-[hsl(var(--ocean-deep))] shadow-lg">
-                    <category.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-display font-semibold text-foreground">
-                    {category.name}
-                  </h3>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {category.items.map((item, itemIdx) => (
-                    <div
-                      key={itemIdx}
-                      className="flex justify-between items-start p-4 rounded-xl hover:bg-white/50 transition-colors group"
-                    >
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{item.name}</h4>
-                        <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
-                      </div>
-                      <span className="text-transparent bg-gradient-to-r from-[hsl(var(--sunset))] to-[hsl(var(--coral))] bg-clip-text font-bold text-lg ml-4">{item.price}</span>
+            <StaggerItem key={idx}>
+              <Card className="glass-card border-0 overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <CardContent className="p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--ocean))] to-[hsl(var(--ocean-deep))] shadow-lg">
+                      <category.icon className="w-6 h-6 text-white" />
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <h3 className="text-2xl font-display font-semibold text-foreground">
+                      {category.name}
+                    </h3>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {category.items.map((item, itemIdx) => (
+                      <div
+                        key={itemIdx}
+                        className="flex justify-between items-start p-4 rounded-xl hover:bg-white/50 transition-colors group"
+                      >
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{item.name}</h4>
+                          <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
+                        </div>
+                        <span className="text-transparent bg-gradient-to-r from-[hsl(var(--sunset))] to-[hsl(var(--coral))] bg-clip-text font-bold text-lg ml-4">{item.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerReveal>
 
-        <p className="text-center text-muted-foreground mt-8 text-sm">
-          * Prices subject to change. Fresh catch availability varies daily.
-        </p>
+        <ScrollReveal delay={0.3}>
+          <p className="text-center text-muted-foreground mt-8 text-sm">
+            * Prices subject to change. Fresh catch availability varies daily.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );
