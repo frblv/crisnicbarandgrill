@@ -1,5 +1,7 @@
 import { Waves, UtensilsCrossed, Heart } from "lucide-react";
 import beachView from "@/assets/beach-view.jpeg";
+import ScrollReveal from "./ScrollReveal";
+import StaggerReveal, { StaggerItem } from "./StaggerReveal";
 
 const features = [
   {
@@ -37,7 +39,7 @@ const About = () => {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-[hsl(var(--ocean)/0.4)] rounded-full blur-3xl floating" style={{ animationDelay: '-3s' }} />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <ScrollReveal className="text-center mb-16">
           <p className="text-white/80 font-medium tracking-widest uppercase mb-2">
             Our Story
           </p>
@@ -50,22 +52,21 @@ const About = () => {
             pull up a chair and let the Caribbean vibes wash over you. We're more than a restaurant — 
             we're a gathering place where friends become family.
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <StaggerReveal className="grid md:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="text-center p-8 rounded-2xl glass-card-dark hover:bg-white/20 transition-all duration-300 hover:scale-105 group"
-            >
-              <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-white/30 to-white/10 mb-4 group-hover:scale-110 transition-transform">
-                <feature.icon className="w-8 h-8 text-white" />
+            <StaggerItem key={idx}>
+              <div className="text-center p-8 rounded-2xl glass-card-dark hover:bg-white/20 transition-all duration-300 hover:scale-105 group h-full">
+                <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-white/30 to-white/10 mb-4 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-display font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-white/80">{feature.description}</p>
               </div>
-              <h3 className="text-xl font-display font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-white/80">{feature.description}</p>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );

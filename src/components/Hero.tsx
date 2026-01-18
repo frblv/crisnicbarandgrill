@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import logo from "@/assets/logo.png";
 import barEntrance from "@/assets/bar-entrance.jpeg";
 import beachView from "@/assets/beach-view.jpeg";
@@ -28,15 +29,20 @@ const Hero = () => {
         </div>
         
         <div className="relative z-10 flex items-center justify-center py-16 md:py-24">
-          <div className="relative">
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const }}
+          >
             {/* Glow effect behind logo */}
             <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--ocean))] via-[hsl(var(--cyan-light))] to-[hsl(var(--sunset))] blur-3xl opacity-40 scale-150 animate-gradient" />
             <img
               src={logo}
               alt="Crisnic Bar & Grill"
-              className="relative w-64 md:w-80 lg:w-96 drop-shadow-2xl animate-fade-in"
+              className="relative w-64 md:w-80 lg:w-96 drop-shadow-2xl"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -46,22 +52,47 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-mesh opacity-60" />
         
         {/* Glass panel */}
-        <div className="relative z-10 glass-card rounded-3xl p-8 md:p-12 max-w-xl mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+        <motion.div 
+          className="relative z-10 glass-card rounded-3xl p-8 md:p-12 max-w-xl mx-auto"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] as const }}
+        >
+          <motion.h2 
+            className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             Discovery Bay
-          </h2>
+          </motion.h2>
           
-          <div className="flex items-center justify-center gap-2 text-accent mb-1">
+          <motion.div 
+            className="flex items-center justify-center gap-2 text-accent mb-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
             <span className="text-lg md:text-xl font-medium">Fortlands Road, Discovery Bay, Jamaica</span>
-          </div>
+          </motion.div>
           <MapPin className="w-5 h-5 text-accent mx-auto mb-6" />
 
-          <div className="text-foreground/80 text-lg md:text-xl mb-8 space-y-1">
+          <motion.div 
+            className="text-foreground/80 text-lg md:text-xl mb-8 space-y-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
             <p>Open Daily: 10 a.m. to 10 p.m.</p>
-          </div>
+          </motion.div>
 
           {/* Action Buttons with gradients */}
-          <div className="flex flex-col gap-4 w-full">
+          <motion.div 
+            className="flex flex-col gap-4 w-full"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
             <button
               onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
               className="flex items-center justify-center gap-3 bg-gradient-to-r from-[hsl(var(--ocean-deep))] to-[hsl(var(--ocean))] text-white py-4 px-6 rounded-xl font-semibold text-lg hover:opacity-90 transition-all hover:scale-[1.02] shadow-lg"
@@ -85,8 +116,8 @@ const Hero = () => {
               <Phone className="w-5 h-5" />
               876 462 3310
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
