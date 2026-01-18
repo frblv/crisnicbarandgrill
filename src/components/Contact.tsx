@@ -91,6 +91,19 @@ const Contact = () => {
             />
           </div>
         </Card>
+
+        {/* Get Directions Button */}
+        <div className="text-center mt-6">
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=Crisnic+Bar+and+Grill,+Discovery+Bay,+Jamaica"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-primary/90 transition-colors"
+          >
+            <MapPin className="w-5 h-5" />
+            Get Directions
+          </a>
+        </div>
       </div>
     </section>
   );
