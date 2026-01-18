@@ -1,10 +1,25 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Clock, CreditCard } from "lucide-react";
+import barView from "@/assets/bar-view.jpeg";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 px-4 bg-secondary">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="py-20 px-4 relative overflow-hidden">
+      {/* Blurred background image */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={barView}
+          alt=""
+          className="w-full h-full object-cover blur-3xl scale-110 opacity-25"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/85 to-secondary/90" />
+      </div>
+
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-10 right-10 w-72 h-72 bg-[hsl(var(--ocean)/0.2)] rounded-full blur-3xl floating" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[hsl(var(--sunset)/0.15)] rounded-full blur-3xl floating" style={{ animationDelay: '-2s' }} />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <p className="text-primary font-medium tracking-widest uppercase mb-2">
             Visit Us
@@ -18,10 +33,10 @@ const Contact = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Card className="text-center">
+          <Card className="glass-card border-0 text-center hover:scale-105 transition-transform duration-300">
             <CardContent className="pt-6">
-              <div className="inline-flex p-3 rounded-full bg-primary/10 mb-4">
-                <MapPin className="w-6 h-6 text-primary" />
+              <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--ocean))] to-[hsl(var(--ocean-deep))] mb-4 shadow-lg">
+                <MapPin className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Location</h3>
               <p className="text-muted-foreground text-sm">
@@ -31,10 +46,10 @@ const Contact = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="glass-card border-0 text-center hover:scale-105 transition-transform duration-300">
             <CardContent className="pt-6">
-              <div className="inline-flex p-3 rounded-full bg-primary/10 mb-4">
-                <Clock className="w-6 h-6 text-primary" />
+              <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--sunset))] to-[hsl(var(--coral))] mb-4 shadow-lg">
+                <Clock className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Hours</h3>
               <p className="text-muted-foreground text-sm">
@@ -44,10 +59,10 @@ const Contact = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="glass-card border-0 text-center hover:scale-105 transition-transform duration-300">
             <CardContent className="pt-6">
-              <div className="inline-flex p-3 rounded-full bg-primary/10 mb-4">
-                <Phone className="w-6 h-6 text-primary" />
+              <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--palm))] to-[hsl(140,60%,25%)] mb-4 shadow-lg">
+                <Phone className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Contact</h3>
               <div className="space-y-1">
@@ -61,10 +76,10 @@ const Contact = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center">
+          <Card className="glass-card border-0 text-center hover:scale-105 transition-transform duration-300">
             <CardContent className="pt-6">
-              <div className="inline-flex p-3 rounded-full bg-primary/10 mb-4">
-                <CreditCard className="w-6 h-6 text-primary" />
+              <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--golden))] to-[hsl(35,90%,45%)] mb-4 shadow-lg">
+                <CreditCard className="w-6 h-6 text-white" />
               </div>
               <h3 className="font-semibold text-foreground mb-2">Payment</h3>
               <p className="text-muted-foreground text-sm">
@@ -76,7 +91,7 @@ const Contact = () => {
         </div>
 
         {/* Map Embed */}
-        <Card className="overflow-hidden">
+        <Card className="glass-card border-0 overflow-hidden shadow-2xl">
           <div className="aspect-[21/9] bg-muted">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.5!2d-77.4095!3d18.4668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ed978a7a8b6b3a1%3A0x0!2sCrisnic%20Bar%20and%20Grill%2C%20Discovery%20Bay%2C%20Jamaica!5e0!3m2!1sen!2sus!4v1705500000000!5m2!1sen!2sus"
@@ -93,12 +108,12 @@ const Contact = () => {
         </Card>
 
         {/* Get Directions Button */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-8">
           <a
             href="https://www.google.com/maps/dir/?api=1&destination=Crisnic+Bar+and+Grill,+Discovery+Bay,+Jamaica"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[hsl(var(--ocean-deep))] to-[hsl(var(--ocean))] text-white font-semibold rounded-full hover:opacity-90 transition-all hover:scale-105 shadow-xl"
           >
             <MapPin className="w-5 h-5" />
             Get Directions

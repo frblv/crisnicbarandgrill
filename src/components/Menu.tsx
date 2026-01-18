@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Fish, Shell, Drumstick, Beer, GlassWater } from "lucide-react";
+import barInterior from "@/assets/bar-interior.jpeg";
 
 const menuCategories = [
   {
@@ -56,8 +57,22 @@ const menuCategories = [
 
 const Menu = () => {
   return (
-    <section id="menu" className="py-20 px-4 bg-secondary">
-      <div className="max-w-6xl mx-auto">
+    <section id="menu" className="py-20 px-4 relative overflow-hidden">
+      {/* Blurred background image */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={barInterior}
+          alt=""
+          className="w-full h-full object-cover blur-3xl scale-110 opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/95 via-secondary/90 to-secondary/95" />
+      </div>
+
+      {/* Gradient orbs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[hsl(var(--ocean)/0.15)] rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[hsl(var(--sunset)/0.1)] rounded-full blur-3xl" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <p className="text-primary font-medium tracking-widest uppercase mb-2">
             Taste of Jamaica
@@ -72,11 +87,11 @@ const Menu = () => {
 
         <div className="grid gap-8 md:gap-10">
           {menuCategories.map((category, idx) => (
-            <Card key={idx} className="overflow-hidden shadow-lg">
+            <Card key={idx} className="glass-card border-0 overflow-hidden hover:shadow-2xl transition-shadow duration-300">
               <CardContent className="p-6 md:p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-full bg-primary/10">
-                    <category.icon className="w-6 h-6 text-primary" />
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--ocean))] to-[hsl(var(--ocean-deep))] shadow-lg">
+                    <category.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-display font-semibold text-foreground">
                     {category.name}
@@ -86,13 +101,13 @@ const Menu = () => {
                   {category.items.map((item, itemIdx) => (
                     <div
                       key={itemIdx}
-                      className="flex justify-between items-start p-4 rounded-lg hover:bg-muted transition-colors"
+                      className="flex justify-between items-start p-4 rounded-xl hover:bg-white/50 transition-colors group"
                     >
                       <div className="flex-1">
-                        <h4 className="font-semibold text-foreground">{item.name}</h4>
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{item.name}</h4>
                         <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
                       </div>
-                      <span className="text-accent font-bold text-lg ml-4">{item.price}</span>
+                      <span className="text-transparent bg-gradient-to-r from-[hsl(var(--sunset))] to-[hsl(var(--coral))] bg-clip-text font-bold text-lg ml-4">{item.price}</span>
                     </div>
                   ))}
                 </div>
