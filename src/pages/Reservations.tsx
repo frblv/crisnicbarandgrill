@@ -399,10 +399,14 @@ const Reservations = () => {
           transition={{ delay: 0.5 }}
           className="text-center mt-8 text-white/70"
         >
-          <p>
+          <p className="flex flex-wrap items-center justify-center gap-1">
             For immediate assistance, call us at{" "}
-            <a href="tel:+18769731969" className="text-white hover:underline">
-              (876) 973-1969
+            <a href="tel:+18764623310" className="text-white hover:underline">
+              (876) 462-3310
+            </a>
+            {" "}or{" "}
+            <a href="tel:+18768541480" className="text-white hover:underline">
+              (876) 854-1480
             </a>
           </p>
         </motion.div>
