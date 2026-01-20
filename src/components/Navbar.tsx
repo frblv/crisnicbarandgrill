@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -8,6 +9,7 @@ const navLinks = [
   { name: "Gallery", href: "#gallery" },
   { name: "About", href: "#about" },
   { name: "Find Us", href: "#contact" },
+  { name: "Reservations", href: "/reservations", isRoute: true },
 ];
 
 const Navbar = () => {
@@ -56,17 +58,27 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleNavClick(link.href)}
-                className={`font-medium transition-colors hover:text-primary ${
-                  isScrolled ? "text-foreground" : "text-white"
-                }`}
-              >
-                {link.name}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`font-medium transition-colors hover:text-primary px-4 py-2 rounded-full bg-gradient-ocean text-white`}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`font-medium transition-colors hover:text-primary ${
+                    isScrolled ? "text-foreground" : "text-white"
+                  }`}
+                >
+                  {link.name}
+                </button>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,15 +97,26 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-background border-t">
           <div className="px-4 py-4 space-y-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleNavClick(link.href)}
-                className="block w-full text-left py-3 px-4 rounded-lg font-medium text-foreground hover:bg-muted transition-colors"
-              >
-                {link.name}
-              </button>
-            ))}
+            {navLinks.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left py-3 px-4 rounded-lg font-medium text-white bg-gradient-ocean hover:opacity-90 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link.href)}
+                  className="block w-full text-left py-3 px-4 rounded-lg font-medium text-foreground hover:bg-muted transition-colors"
+                >
+                  {link.name}
+                </button>
+              )
+            )}
           </div>
         </div>
       )}
