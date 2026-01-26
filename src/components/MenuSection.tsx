@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { useState, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import foodMenu from "@/assets/food-menu.png";
 
 interface MenuItem {
   name: string;
@@ -52,6 +56,13 @@ const menuData: MenuCategory[] = [
 ];
 
 const MenuSection = () => {
+  const [scale, setScale] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const zoomIn = () => setScale((prev) => Math.min(prev + 0.25, 3));
+  const zoomOut = () => setScale((prev) => Math.max(prev - 0.25, 0.5));
+  const resetZoom = () => setScale(1);
+
   return (
     <section id="menu" className="py-20 px-4 bg-gradient-to-b from-secondary to-background">
       <div className="max-w-5xl mx-auto">
@@ -73,7 +84,8 @@ const MenuSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Text Menu */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {menuData.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -126,6 +138,65 @@ const MenuSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Menu Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h3 className="text-2xl font-display font-bold text-foreground text-center mb-6">
+            Full Menu
+          </h3>
+          
+          {/* Zoom Controls */}
+          <div className="flex justify-center gap-2 mb-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={zoomOut}
+              disabled={scale <= 0.5}
+              className="flex items-center gap-1"
+            >
+              <ZoomOut className="w-4 h-4" />
+              <span className="hidden sm:inline">Zoom Out</span>
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={resetZoom}
+              className="flex items-center gap-1"
+            >
+              <RotateCcw className="w-4 h-4" />
+              <span className="hidden sm:inline">Reset</span>
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={zoomIn}
+              disabled={scale >= 3}
+              className="flex items-center gap-1"
+            >
+              <ZoomIn className="w-4 h-4" />
+              <span className="hidden sm:inline">Zoom In</span>
+            </Button>
+          </div>
+
+          {/* Scrollable & Zoomable Menu Container */}
+          <div
+            ref={containerRef}
+            className="relative overflow-auto bg-white rounded-xl shadow-xl border border-border max-h-[70vh] cursor-grab active:cursor-grabbing"
+          >
+            <img
+              src={foodMenu}
+              alt="Crisnic Bar & Grill Food Menu"
+              className="w-full transition-transform duration-200 origin-top-left"
+              style={{ transform: `scale(${scale})` }}
+              draggable={false}
+            />
+          </div>
+        </motion.div>
 
         <motion.p 
           className="text-center text-muted-foreground mt-8 text-sm"
