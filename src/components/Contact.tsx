@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Clock, CreditCard } from "lucide-react";
+import { MapPin, Phone, Clock, Mail } from "lucide-react";
 import barView from "@/assets/bar-view.jpeg";
 import ScrollReveal from "./ScrollReveal";
 import StaggerReveal, { StaggerItem } from "./StaggerReveal";
@@ -79,6 +79,9 @@ const Contact = () => {
                   <a href="tel:+18764623310" className="block text-muted-foreground text-sm hover:text-primary transition-colors">
                     876 462 3310
                   </a>
+                  <a href="mailto:help@crisnicbarandgrill.com" className="block text-muted-foreground text-sm hover:text-primary transition-colors">
+                    help@crisnicbarandgrill.com
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -88,13 +91,12 @@ const Contact = () => {
             <Card className="glass-card border-0 text-center hover:scale-105 transition-transform duration-300 h-full">
               <CardContent className="pt-6">
                 <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-[hsl(var(--golden))] to-[hsl(35,90%,45%)] mb-4 shadow-lg">
-                  <CreditCard className="w-6 h-6 text-white" />
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">Payment</h3>
-                <p className="text-muted-foreground text-sm">
-                  Cash & Cards<br />
-                  Accepted
-                </p>
+                <h3 className="font-semibold text-foreground mb-2">Email</h3>
+                <a href="mailto:help@crisnicbarandgrill.com" className="text-muted-foreground text-sm hover:text-primary transition-colors block">
+                  help@crisnicbarandgrill.com
+                </a>
               </CardContent>
             </Card>
           </StaggerItem>
